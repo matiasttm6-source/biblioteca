@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>la biblioteca</title>
+
+</head>
+
+<body>
+
+    <h1>la biblioteca</h1>
+
+    <a href="/salir">
+        cerrar sesión
+    </a>
+
+    <hr>
+
+    <h2>agregar</h2>
+
+    <form method="POST" action="/agregar">
+
+        <input
+            type="text"
+            name="titulo"
+            placeholder="Título"
+            required
+        >
+
+        <input
+            type="text"
+            name="autor"
+            placeholder="Autor"
+            required
+        >
+
+        <input
+            type="number"
+            name="año"
+            placeholder="Año"
+            required
+        >
+
+        <button type="submit">
+            agregar
+        </button>
+
+    </form>
+
+    <hr>
+
+    <h2>libros</h2>
+
+    {% if libros %}
+
+        {% for libro in libros %}
+
+            <div>
+
+                <strong>
+                    {{ libro[1] }}
+                </strong>
+
+                -
+                {{ libro[2] }}
+
+                -
+                {{ libro[3] }}
+
+                <br><br>
+
+                <form
+                    method="POST"
+                    action="/editar/{{ libro[0] }}"
+                >
+
+                    <input
+                        type="text"
+                        name="titulo"
+                        value="{{ libro[1] }}"
+                        required
+                    >
+
+                    <input
+                        type="text"
+                        name="autor"
+                        value="{{ libro[2] }}"
+                        required
+                    >
+
+                    <input
+                        type="number"
+                        name="año"
+                        value="{{ libro[3] }}"
+                        required
+                    >
+
+                    <button type="submit">
+                        Editar
+                    </button>
+
+                </form>
+
+                <br>
+
+                <a href="/eliminar/{{ libro[0] }}">
+                    eliminar
+                </a>
+
+            </div>
+
+            <hr>
+
+        {% endfor %}
+
+    {% else %}
+
+        <p>
+            no hay libros.
+        </p>
+
+    {% endif %}
+
+</body>
+
+</html>
