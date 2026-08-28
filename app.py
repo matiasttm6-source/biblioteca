@@ -8,7 +8,7 @@ app.secret_key = "biblioteca-clave-123"
 
 # Credenciales 
 USUARIO = "datos"
-CONTRASENA = "datos123"
+CONTRASENA = "abc"
 
 
 # base de datos
